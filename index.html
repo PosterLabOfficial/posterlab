@@ -1,99 +1,41 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="bn">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#10111b">
-<title>PosterLab — Profile Poster Maker</title>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#082f1e"><title>PosterLab — দলীয় পোস্টার মেকার</title>
 <style>
-:root{--bg:#0b0c14;--panel:#151725;--muted:#a5a8bb;--text:#f7f7fb;--accent:#a78bfa;--line:#292c40}
-*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 10% 0%,#292044 0,transparent 34%),var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif}
-header{max-width:1100px;margin:auto;padding:22px 18px;display:flex;align-items:center;justify-content:space-between}
-.logo{font-weight:850;font-size:23px;letter-spacing:-1px}.logo span{color:var(--accent)}.tag{font-size:12px;color:var(--muted);border:1px solid var(--line);padding:7px 10px;border-radius:99px}
-main{max-width:1100px;margin:20px auto 60px;padding:0 18px}.intro{text-align:center;margin:28px 0 30px}.eyebrow{color:#c4b5fd;text-transform:uppercase;letter-spacing:2px;font-size:11px;font-weight:800}.intro h1{font-size:clamp(30px,6vw,48px);margin:10px 0 8px;letter-spacing:-1.8px}.intro p{color:var(--muted);margin:0}
-.workspace{display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,.85fr);gap:22px;align-items:start}
-.preview,.controls{background:rgba(21,23,37,.94);border:1px solid var(--line);border-radius:22px;padding:18px;box-shadow:0 18px 60px #0005}
-.section-title{font-size:14px;font-weight:750;margin:0 0 14px}.canvas-wrap{background:#090a10;border-radius:16px;padding:12px;display:flex;justify-content:center;overflow:hidden}
-canvas{width:min(100%,420px);height:auto;aspect-ratio:4/5;border-radius:8px;display:block}
-.hint{color:var(--muted);font-size:12px;text-align:center;margin:12px 0 0}
-.field{margin:0 0 17px}.field label{display:block;font-size:13px;font-weight:650;margin-bottom:8px}.field input[type=text],.field input[type=file]{width:100%;background:#0e101a;border:1px solid var(--line);border-radius:12px;color:var(--text);padding:12px;font:inherit;font-size:14px}
-.field input[type=file]{font-size:12px}.templates{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}.template{border:1px solid var(--line);background:#0e101a;color:var(--text);border-radius:12px;padding:12px 7px;font-size:12px;font-weight:700;cursor:pointer}.template.active{border-color:var(--accent);background:#292044}
-button{font:inherit}.download{width:100%;border:0;border-radius:13px;padding:14px;background:linear-gradient(110deg,#a78bfa,#6d5ce7);color:white;font-weight:850;font-size:15px;cursor:pointer;margin-top:3px}.download:active{transform:scale(.99)}
-.note{font-size:11px;line-height:1.5;color:var(--muted);margin:12px 2px 0}.footer{text-align:center;color:#d7d2e8;font-size:13px;margin:36px auto 24px;padding:20px 12px 28px;border-top:1px solid #292c40;line-height:1.5}
-@media(max-width:760px){.workspace{grid-template-columns:1fr}.intro{margin:20px 0 24px}.preview{order:1}.controls{order:2}header{padding-top:16px}.tag{font-size:10px}}
-</style>
-</head>
+*{box-sizing:border-box}body{margin:0;background:#0c1010;color:#fff;font-family:system-ui,-apple-system,"Noto Sans Bengali",sans-serif}header{max-width:1100px;margin:auto;padding:18px;display:flex;justify-content:space-between;align-items:center}.logo{font-size:24px;font-weight:900}.logo span{color:#f22}.tag{font-size:11px;color:#cbd5d1;border:1px solid #385247;border-radius:30px;padding:7px 10px}main{max-width:1100px;margin:12px auto 50px;padding:0 16px}.intro{text-align:center;margin:18px 0 24px}.intro h1{font-size:clamp(25px,5vw,38px);margin:0 0 6px}.intro p{color:#aab8b1;margin:0;font-size:14px}.layout{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(280px,.8fr);gap:20px;align-items:start}.panel{background:#171d1b;border:1px solid #34443c;border-radius:18px;padding:16px}.panel h2{font-size:16px;margin:0 0 13px}.canvasbox{background:#080b09;padding:10px;border-radius:12px;display:flex;justify-content:center}canvas{display:block;width:min(100%,500px);height:auto;background:#092f1e}.hint,.note{font-size:12px;line-height:1.6;color:#aab8b1}.hint{text-align:center;margin:10px 0 0}.field{margin:0 0 16px}.field label{display:block;font-size:13px;font-weight:700;margin-bottom:7px}.field input{width:100%;padding:12px;border:1px solid #3a4a42;background:#0c1210;color:#fff;border-radius:10px;font:inherit}.field input[type=file]{font-size:12px}.download{width:100%;border:0;background:#e00000;color:#fff;padding:14px;border-radius:11px;font-weight:850;font-size:15px}.download:disabled{opacity:.45}.note{margin:12px 0 0}.footer{text-align:center;color:#cbd5d1;font-size:12px;padding:24px 10px 30px}.footer b{color:#fff}@media(max-width:760px){.layout{grid-template-columns:1fr}.preview{order:1}.controls{order:2}header{padding:14px}.tag{font-size:9px}}
+</style></head>
 <body>
-<header><div class="logo">Poster<span>Lab</span></div><div class="tag">PROFILE POSTER MAKER · BETA</div></header>
-<main>
-  <section class="intro"><div class="eyebrow">Create something memorable</div><h1>Your profile. Your poster.</h1><p>Upload a photo, add your name and slogan, then download.</p></section>
-  <section class="workspace">
-    <div class="preview">
-      <h2 class="section-title">Live preview</h2>
-      <div class="canvas-wrap"><canvas id="poster" width="800" height="1000"></canvas></div>
-      <p class="hint">Your poster updates as you edit.</p>
-    </div>
-    <div class="controls">
-      <h2 class="section-title">Personalize your poster</h2>
-      <div class="field"><label for="photo">1. Upload your photo</label><input id="photo" type="file" accept="image/*"></div>
-      <div class="field"><label for="name">2. Your name</label><input id="name" type="text" maxlength="28" placeholder="e.g. Mohammed Anis" value="YOUR NAME"></div>
-      <div class="field"><label for="slogan">3. Short slogan</label><input id="slogan" type="text" maxlength="52" placeholder="e.g. Dream big. Work hard." value="DREAM BIG · WORK HARD"></div>
-      <div class="field"><label>4. Choose a fixed design</label><div class="templates">
-        <button class="template active" data-theme="midnight">Midnight</button>
-        <button class="template" data-theme="royal">Royal</button>
-        <button class="template" data-theme="ember">Ember</button>
-      </div></div>
-      <button class="download" id="download">Download poster · PNG</button>
-      <p class="note">This first version works in your browser. Your photo is processed on your device and is not uploaded to a server. Only the photo, name and slogan can be changed; the poster layout stays fixed.</p>
-    </div>
-  </section>
-  <footer class="footer" aria-label="Website credits">
-    <div style="font-size:14px;font-weight:800;color:#f7f7fb;letter-spacing:.3px">PosterLab</div>
-    <div style="margin-top:8px;color:#d7d2e8;font-size:13px;font-weight:600">
-      Created &amp; Developed by <span style="color:#c4b5fd">Mohammed Anis</span>
-    </div>
-  </footer>
-</main>
+<header><div class="logo">Poster<span>Lab</span></div><div class="tag">BANGLA POSTER MAKER</div></header>
+<main><section class="intro"><h1>আপনার পোস্টার তৈরি করুন</h1><p>ছবি, নাম ও পদবি পরিবর্তন করে পোস্টার ডাউনলোড করুন।</p></section>
+<section class="layout"><div class="panel preview"><h2>পোস্টার প্রিভিউ</h2><div class="canvasbox"><canvas id="poster" width="1230" height="1536"></canvas></div><p class="hint">আপনার পরিবর্তনগুলো সঙ্গে সঙ্গে এখানে দেখা যাবে।</p></div>
+<div class="panel controls"><h2>পোস্টার কাস্টমাইজ করুন</h2>
+<div class="field"><label for="photo">১. ডান পাশের বড় ছবিটি নির্বাচন করুন</label><input id="photo" type="file" accept="image/*"></div>
+<div class="field"><label for="name">২. নাম</label><input id="name" type="text" maxlength="30" value="নূর হোসেন" placeholder="আপনার নাম"></div>
+<div class="field"><label for="designation">৩. পদবি</label><input id="designation" type="text" maxlength="35" value="প্রচার সম্পাদক" placeholder="আপনার পদবি"></div>
+<button class="download" id="download">PNG পোস্টার ডাউনলোড</button>
+<p class="note">শুধু ডান পাশের বড় ছবিটি, নিচের নাম ও পদবি পরিবর্তন হবে। বাম পাশের গোলাকার ছবি, স্লোগান, লোগো এবং মূল ডিজাইন অপরিবর্তিত থাকবে। ছবি আপনার ডিভাইসেই প্রসেস হবে; সার্ভারে আপলোড হবে না।</p>
+</div></section>
+<footer class="footer">Created &amp; Developed by <b>Mohammed Anis</b></footer></main>
 <script>
-const canvas=document.getElementById('poster'),ctx=canvas.getContext('2d');
-const photoInput=document.getElementById('photo'),nameInput=document.getElementById('name'),sloganInput=document.getElementById('slogan');
-let portrait=null,theme='midnight';
-const palettes={midnight:{a:'#9c83ff',b:'#17152d',c:'#f6f2ff'},royal:{a:'#e7c779',b:'#17233c',c:'#fff8e8'},ember:{a:'#ff9b62',b:'#301b22',c:'#fff3ed'}};
-function roundedRect(x,y,w,h,r){ctx.beginPath();ctx.roundRect(x,y,w,h,r);ctx.fill()}
-function draw(){
- const p=palettes[theme],w=800,h=1000;
- ctx.clearRect(0,0,w,h);
- const g=ctx.createLinearGradient(0,0,w,h);g.addColorStop(0,p.b);g.addColorStop(1,'#090a12');ctx.fillStyle=g;ctx.fillRect(0,0,w,h);
- ctx.strokeStyle=p.a;ctx.lineWidth=3;ctx.strokeRect(34,34,w-68,h-68);
- ctx.globalAlpha=.14;ctx.fillStyle=p.a;ctx.beginPath();ctx.arc(690,170,230,0,Math.PI*2);ctx.fill();ctx.beginPath();ctx.arc(90,850,190,0,Math.PI*2);ctx.fill();ctx.globalAlpha=1;
- ctx.fillStyle=p.a;ctx.font='700 22px Arial';ctx.textAlign='left';ctx.fillText('POSTERLAB  /  PROFILE SERIES',76,92);
- ctx.fillStyle='#ffffff';ctx.font='800 54px Arial';ctx.fillText('MAKE YOUR',76,170);ctx.fillText('MARK.',76,230);
- // portrait frame
- const bx=105,by=280,bw=590,bh=470;
- ctx.save();ctx.beginPath();ctx.roundRect(bx,by,bw,bh,22);ctx.clip();
- if(portrait){
-   const scale=Math.max(bw/portrait.width,bh/portrait.height),sw=portrait.width*scale,sh=portrait.height*scale;
-   ctx.drawImage(portrait,bx+(bw-sw)/2,by+(bh-sh)/2,sw,sh);
- }else{
-   const pg=ctx.createLinearGradient(bx,by,bx+bw,by+bh);pg.addColorStop(0,'#393451');pg.addColorStop(1,'#171827');ctx.fillStyle=pg;ctx.fillRect(bx,by,bw,bh);
-   ctx.fillStyle='#c9c2e8';ctx.textAlign='center';ctx.font='700 25px Arial';ctx.fillText('YOUR PHOTO GOES HERE',400,510);
-   ctx.font='100px Arial';ctx.fillText('＋',400,430);
- }
- ctx.restore();
- // subtle bottom fade on image
- const fade=ctx.createLinearGradient(0,by+bh-130,0,by+bh);fade.addColorStop(0,'#0000');fade.addColorStop(1,'#0009');ctx.fillStyle=fade;roundedRect(bx,by,bw,bh,22);
- ctx.fillStyle=p.a;ctx.fillRect(76,790,72,5);
- ctx.textAlign='left';ctx.fillStyle=p.c;ctx.font='800 58px Arial';
- let nm=(nameInput.value.trim()||'YOUR NAME').toUpperCase();if(nm.length>19){ctx.font='800 46px Arial'}
- ctx.fillText(nm,76,865,645);
- ctx.fillStyle=p.a;ctx.font='700 23px Arial';
- let sl=(sloganInput.value.trim()||'YOUR SLOGAN').toUpperCase();ctx.fillText(sl,78,915,645);
- ctx.fillStyle='#ffffff99';ctx.font='600 14px Arial';ctx.textAlign='right';ctx.fillText('CREATE  •  INSPIRE  •  REPEAT',724,955);
+const c=document.getElementById('poster'),ctx=c.getContext('2d');
+const photoInput=document.getElementById('photo'),nameInput=document.getElementById('name'),designationInput=document.getElementById('designation');
+const base=new Image();base.src='jamaat-template-base.jpg';let portrait=null,ready=false;
+base.onload=()=>{ready=true;draw()};
+function draw(){if(!ready)return;ctx.clearRect(0,0,c.width,c.height);ctx.drawImage(base,0,0,c.width,c.height);
+// Draw uploaded portrait into the original right-side portrait silhouette area.
+if(portrait){ctx.save();ctx.beginPath();ctx.moveTo(548,1270);ctx.lineTo(1223,1270);ctx.lineTo(1223,1000);ctx.lineTo(1180,940);ctx.lineTo(1110,900);ctx.lineTo(1050,880);ctx.lineTo(1020,830);ctx.lineTo(1010,760);ctx.lineTo(990,700);ctx.lineTo(950,650);ctx.lineTo(900,620);ctx.lineTo(850,615);ctx.lineTo(810,630);ctx.lineTo(780,665);ctx.lineTo(770,720);ctx.lineTo(770,790);ctx.lineTo(745,850);ctx.lineTo(690,900);ctx.lineTo(630,960);ctx.lineTo(585,1040);ctx.closePath();ctx.clip();
+const bx=540,by=610,bw=690,bh=660,scale=Math.max(bw/portrait.width,bh/portrait.height),sw=portrait.width*scale,sh=portrait.height*scale;ctx.drawImage(portrait,bx+(bw-sw)/2,by+(bh-sh)/2,sw,sh);ctx.restore();}
+// Dynamic footer text on the red nameplate.
+const nm=(nameInput.value.trim()||'আপনার নাম');const ds=(designationInput.value.trim()||'আপনার পদবি');
+ctx.fillStyle='#fff';ctx.textAlign='center';ctx.textBaseline='alphabetic';
+let fs=88;ctx.font=`900 ${fs}px "Noto Sans Bengali",sans-serif`;while(ctx.measureText(nm).width>1080&&fs>42){fs-=3;ctx.font=`900 ${fs}px "Noto Sans Bengali",sans-serif`;}ctx.fillText(nm,615,1400,1080);
+let dsz=48;ctx.font=`800 ${dsz}px "Noto Sans Bengali",sans-serif`;while(ctx.measureText(ds).width>1080&&dsz>26){dsz-=2;ctx.font=`800 ${dsz}px "Noto Sans Bengali",sans-serif`;}ctx.fillText(ds,615,1460,1080);
+// Original branch name remains fixed.
+ctx.font='800 38px "Noto Sans Bengali",sans-serif';ctx.textAlign='center';ctx.fillText('বাংলাদেশ জামায়াতে ইসলামী টেকনাফ পৌর শাখা',615,1512,1120);
 }
-photoInput.addEventListener('change',e=>{const f=e.target.files[0];if(!f)return;const url=URL.createObjectURL(f);const img=new Image();img.onload=()=>{portrait=img;draw();URL.revokeObjectURL(url)};img.src=url});
-[nameInput,sloganInput].forEach(el=>el.addEventListener('input',draw));
-document.querySelectorAll('.template').forEach(btn=>btn.addEventListener('click',()=>{document.querySelectorAll('.template').forEach(b=>b.classList.remove('active'));btn.classList.add('active');theme=btn.dataset.theme;draw()}));
-document.getElementById('download').addEventListener('click',()=>{const a=document.createElement('a');a.download='PosterLab-Profile-Poster.png';a.href=canvas.toDataURL('image/png');a.click()});
-draw();
-</script>
-</body></html>
+photoInput.addEventListener('change',e=>{const f=e.target.files&&e.target.files[0];if(!f)return;const url=URL.createObjectURL(f),img=new Image();img.onload=()=>{portrait=img;draw();URL.revokeObjectURL(url)};img.onerror=()=>{alert('ছবিটি খোলা যায়নি। অন্য ছবি দিন।');URL.revokeObjectURL(url)};img.src=url});
+[nameInput,designationInput].forEach(el=>el.addEventListener('input',draw));
+document.getElementById('download').addEventListener('click',()=>{if(!ready)return;draw();const a=document.createElement('a');a.download='PosterLab-Party-Poster.png';a.href=c.toDataURL('image/png');a.click()});
+</script></body></html>
